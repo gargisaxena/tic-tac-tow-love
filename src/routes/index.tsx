@@ -107,14 +107,14 @@ function Index() {
 
   return (
     <div className="app-bg text-foreground font-display relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 py-8 sm:py-12">
-      <div className="card-shadow relative w-full max-w-md rounded-[2rem] bg-card/85 p-6 ring-1 ring-foreground/5 backdrop-blur-xl sm:p-8">
+      <div className="card-shadow relative w-full max-w-md rounded-[2.5rem] bg-card/85 p-6 ring-1 ring-foreground/5 backdrop-blur-xl sm:p-9">
         <div className="flex flex-col items-center gap-6">
           <header className="text-center">
             <h1 className="text-5xl font-bold leading-none tracking-tight text-balance sm:text-6xl">
               Tic Tac Toe
             </h1>
             <p className="mt-3 text-pretty text-base text-foreground/60 sm:text-lg">
-              Get three in a row to win!
+              Get three in a row to win! ✨
             </p>
           </header>
 

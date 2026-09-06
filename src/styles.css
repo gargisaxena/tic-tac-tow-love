@@ -91,7 +91,7 @@
 }
 
 @utility app-bg {
-  background: linear-gradient(135deg, oklch(0.95 0.045 240) 0%, oklch(0.95 0.04 300) 50%, oklch(0.95 0.05 70) 100%);
+  background: linear-gradient(135deg, oklch(0.95 0.05 240) 0%, oklch(0.95 0.06 350) 50%, oklch(0.95 0.06 70) 100%);
 }
 
 @utility card-shadow {
