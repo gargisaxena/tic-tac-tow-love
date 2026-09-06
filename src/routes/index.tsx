@@ -187,10 +187,10 @@ function Index() {
                   aria-label={`Square ${index + 1}${
                     cell ? `, ${cell}` : ", empty"
                   }`}
-                  className={`grid place-items-center rounded-2xl shadow-sm ring-1 ring-foreground/5 transition-all duration-150 ${
+                  className={`grid place-items-center rounded-3xl shadow-sm ring-1 ring-foreground/5 transition-all duration-150 ${
                     isWinning
-                      ? "bg-celery/25 ring-2 ring-celery animate-win-pulse"
-                      : "bg-card hover:-translate-y-1 hover:scale-[1.05] hover:shadow-md active:scale-95"
+                      ? "bg-celery/30 ring-2 ring-celery animate-win-pulse"
+                      : "bg-card hover:-translate-y-1 hover:scale-[1.06] hover:shadow-md active:scale-95"
                   } ${cell !== null || isOver ? "cursor-default" : "cursor-pointer"}`}
                   style={{
                     animationDelay: isWinning
@@ -217,14 +217,14 @@ function Index() {
             <button
               type="button"
               onClick={playAgain}
-              className="rounded-full bg-gradient-to-r from-x to-o px-6 py-2.5 text-sm font-semibold text-white shadow-lg shadow-x/30 ring-1 ring-white/20 transition-transform hover:-translate-y-0.5 hover:shadow-xl active:scale-95"
+              className="rounded-full bg-gradient-to-r from-x to-o px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-x/30 ring-1 ring-white/30 transition-transform hover:-translate-y-0.5 hover:shadow-xl active:scale-95"
             >
-              Play Again
+              Play Again 🎉
             </button>
             <button
               type="button"
               onClick={resetScore}
-              className="rounded-full bg-card px-5 py-2.5 text-sm font-semibold text-foreground/60 ring-1 ring-foreground/10 transition-transform hover:-translate-y-0.5 hover:text-foreground active:scale-95"
+              className="rounded-full bg-card px-5 py-3 text-sm font-semibold text-foreground/60 ring-1 ring-foreground/10 transition-transform hover:-translate-y-0.5 hover:text-foreground active:scale-95"
             >
               Reset Score
             </button>
