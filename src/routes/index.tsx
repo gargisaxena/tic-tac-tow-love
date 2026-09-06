@@ -106,117 +106,129 @@ function Index() {
   }, [outcome, currentPlayer]);
 
   return (
-    <div className="bg-background text-foreground font-display flex min-h-screen w-full flex-col items-center justify-center px-4 py-10">
-      <div className="flex w-full max-w-md flex-col items-center gap-7">
-        <header className="text-center">
-          <h1 className="text-5xl font-bold leading-none tracking-tight text-balance sm:text-6xl">
-            Tic Tac Toe
-          </h1>
-          <p className="mt-3 text-pretty text-base text-foreground/60 sm:text-lg">
-            Get three in a row to win!
-          </p>
-        </header>
+    <div className="app-bg text-foreground font-display relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 py-8 sm:py-12">
+      <div className="card-shadow relative w-full max-w-md rounded-[2.5rem] bg-card/85 p-6 ring-1 ring-foreground/5 backdrop-blur-xl sm:p-9">
+        <div className="flex flex-col items-center gap-6">
+          <header className="text-center">
+            <h1 className="text-5xl font-bold leading-none tracking-tight text-balance sm:text-6xl">
+              Tic Tac Toe
+            </h1>
+            <p className="mt-3 text-pretty text-base text-foreground/60 sm:text-lg">
+              Get three in a row to win!
+            </p>
+          </header>
 
-        {/* Scoreboard */}
-        <div className="grid w-full grid-cols-3 gap-2.5 rounded-3xl bg-card p-3 ring-1 ring-foreground/5">
-          <div className="flex flex-col items-center gap-1 rounded-2xl bg-berry/20 py-3">
-            <span className="text-xl font-bold text-x">X</span>
-            <span className="text-2xl font-bold leading-none">{scores.X}</span>
+          {/* Scoreboard */}
+          <div className="grid w-full grid-cols-3 gap-2.5 rounded-2xl bg-foreground/[0.04] p-3">
+            <div className="flex flex-col items-center gap-1 rounded-2xl bg-x/15 py-3">
+              <span className="text-lg font-bold text-x">X</span>
+              <span className="text-2xl font-bold leading-none">{scores.X}</span>
+            </div>
+            <div className="flex flex-col items-center gap-1 rounded-2xl bg-foreground/[0.04] py-3">
+              <span className="text-lg font-bold leading-none text-foreground/60">
+                Draws
+              </span>
+              <span className="text-2xl font-bold leading-none">{scores.draws}</span>
+            </div>
+            <div className="flex flex-col items-center gap-1 rounded-2xl bg-o/15 py-3">
+              <span className="text-lg font-bold text-o">O</span>
+              <span className="text-2xl font-bold leading-none">{scores.O}</span>
+            </div>
           </div>
-          <div className="flex flex-col items-center gap-1 rounded-2xl bg-sky py-3">
-            <span className="text-xl font-bold leading-none">Draws</span>
-            <span className="text-2xl font-bold leading-none">{scores.draws}</span>
-          </div>
-          <div className="flex flex-col items-center gap-1 rounded-2xl bg-celery/25 py-3">
-            <span className="text-xl font-bold text-o">O</span>
-            <span className="text-2xl font-bold leading-none">{scores.O}</span>
-          </div>
-        </div>
 
-        {/* Turn / status indicator */}
-        {status.tone === "draw" ? (
-          <div className="flex items-center gap-2.5 rounded-full bg-sky px-5 py-2.5 text-sm font-semibold text-foreground">
-            <span className="grid size-6 shrink-0 place-items-center rounded-full bg-foreground text-xs font-bold text-background">
-              =
-            </span>
-            {status.label}
-          </div>
-        ) : isOver ? (
-          <div className="flex items-center gap-2.5 rounded-full bg-celery/30 px-5 py-2.5 text-sm font-semibold text-foreground">
-            <span
-              className={`grid size-6 shrink-0 place-items-center rounded-full text-xs font-bold text-white ${
-                status.tone === "X" ? "bg-x" : "bg-o"
+          {/* Turn / status indicator */}
+          {status.tone === "draw" ? (
+            <div className="flex items-center gap-2.5 rounded-full bg-foreground/[0.06] px-5 py-2.5 text-sm font-semibold">
+              <span className="grid size-6 shrink-0 place-items-center rounded-full bg-foreground text-xs font-bold text-background">
+                =
+              </span>
+              {status.label}
+            </div>
+          ) : isOver ? (
+            <div
+              className={`flex items-center gap-2.5 rounded-full px-5 py-2.5 text-sm font-semibold ${
+                status.tone === "X" ? "bg-x/15 text-x" : "bg-o/15 text-o"
               }`}
             >
-              {status.tone}
-            </span>
-            {status.label}
-          </div>
-        ) : (
-          <div className="flex items-center gap-2.5 rounded-full bg-card px-5 py-2.5 ring-1 ring-foreground/5">
-            <span
-              className={`grid size-7 place-items-center rounded-full text-sm font-bold text-white ${
-                currentPlayer === "X" ? "bg-x" : "bg-o"
-              }`}
-            >
-              {currentPlayer}
-            </span>
-            <span className="text-sm font-semibold text-foreground/70">
-              {currentPlayer} to move
-            </span>
-          </div>
-        )}
-
-        {/* Board */}
-        <div className="grid w-full grid-cols-3 gap-2.5" style={{ aspectRatio: "1" }}>
-          {board.map((cell, index) => {
-            const isWinning = winningLine?.includes(index) ?? false;
-            return (
-              <button
-                key={index}
-                type="button"
-                onClick={() => handlePlay(index)}
-                disabled={cell !== null || isOver}
-                aria-label={`Square ${index + 1}${
-                  cell ? `, ${cell}` : ", empty"
+              <span
+                className={`grid size-6 shrink-0 place-items-center rounded-full text-xs font-bold text-white ${
+                  status.tone === "X" ? "bg-x" : "bg-o"
                 }`}
-                className={`grid place-items-center rounded-2xl ring-1 transition-transform duration-150 ${
-                  isWinning
-                    ? "bg-celery/25 ring-2 ring-celery animate-win-pulse"
-                    : "bg-card ring-foreground/5 hover:-translate-y-1 hover:scale-[1.05] active:scale-95"
-                } ${cell !== null || isOver ? "cursor-default" : "cursor-pointer"}`}
-                style={{ animationDelay: isWinning ? `${winningLine!.indexOf(index) * 0.1}s` : undefined }}
               >
-                {cell && (
-                  <span
-                    className={`text-6xl font-bold ${
-                      cell === "X" ? "text-x" : "text-o"
-                    } ${isWinning ? "animate-token-drop" : "animate-pop-in"}`}
-                  >
-                    {cell}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
+                {status.tone}
+              </span>
+              {status.label}
+            </div>
+          ) : (
+            <div className="flex items-center gap-2.5 rounded-full bg-foreground/[0.04] px-5 py-2.5 ring-1 ring-foreground/5">
+              <span
+                className={`grid size-7 place-items-center rounded-full text-sm font-bold text-white ${
+                  currentPlayer === "X" ? "bg-x" : "bg-o"
+                }`}
+              >
+                {currentPlayer}
+              </span>
+              <span className="text-sm font-semibold text-foreground/70">
+                {currentPlayer} to move
+              </span>
+            </div>
+          )}
 
-        {/* Controls */}
-        <div className="flex items-center gap-3">
-          <button
-            type="button"
-            onClick={playAgain}
-            className="rounded-full bg-x px-6 py-2.5 text-sm font-semibold text-white ring-1 ring-x/40 transition-transform hover:-translate-y-0.5 active:scale-95"
-          >
-            Play Again
-          </button>
-          <button
-            type="button"
-            onClick={resetScore}
-            className="rounded-full bg-card px-5 py-2.5 text-sm font-semibold text-foreground/60 ring-1 ring-foreground/5 transition-transform hover:-translate-y-0.5 active:scale-95"
-          >
-            Reset Score
-          </button>
+          {/* Board */}
+          <div className="grid w-full grid-cols-3 gap-2.5" style={{ aspectRatio: "1" }}>
+            {board.map((cell, index) => {
+              const isWinning = winningLine?.includes(index) ?? false;
+              return (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => handlePlay(index)}
+                  disabled={cell !== null || isOver}
+                  aria-label={`Square ${index + 1}${
+                    cell ? `, ${cell}` : ", empty"
+                  }`}
+                  className={`grid place-items-center rounded-3xl shadow-sm ring-1 ring-foreground/5 transition-all duration-150 ${
+                    isWinning
+                      ? "bg-celery/45 ring-2 ring-celery animate-win-pulse"
+                      : "bg-card hover:-translate-y-1 hover:scale-[1.06] hover:shadow-md active:scale-95"
+                  } ${cell !== null || isOver ? "cursor-default" : "cursor-pointer"}`}
+                  style={{
+                    animationDelay: isWinning
+                      ? `${winningLine!.indexOf(index) * 0.1}s`
+                      : undefined,
+                  }}
+                >
+                  {cell && (
+                    <span
+                      className={`text-6xl font-bold drop-shadow-md ${
+                        cell === "X" ? "text-x" : "text-o"
+                      } ${isWinning ? "animate-token-drop" : "animate-pop-in"}`}
+                    >
+                      {cell}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Controls */}
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={playAgain}
+              className="rounded-full bg-gradient-to-r from-x to-o px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-x/30 ring-1 ring-white/30 transition-transform hover:-translate-y-0.5 hover:shadow-xl active:scale-95"
+            >
+              Play Again
+            </button>
+            <button
+              type="button"
+              onClick={resetScore}
+              className="rounded-full bg-card px-5 py-3 text-sm font-semibold text-foreground/60 ring-1 ring-foreground/10 transition-transform hover:-translate-y-0.5 hover:text-foreground active:scale-95"
+            >
+              Reset Score
+            </button>
+          </div>
         </div>
       </div>
     </div>
