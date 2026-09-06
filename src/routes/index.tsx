@@ -114,7 +114,7 @@ function Index() {
               Tic Tac Toe
             </h1>
             <p className="mt-3 text-pretty text-base text-foreground/60 sm:text-lg">
-              Get three in a row to win! ✨
+              Get three in a row to win!
             </p>
           </header>
 
@@ -219,7 +219,7 @@ function Index() {
               onClick={playAgain}
               className="rounded-full bg-gradient-to-r from-x to-o px-7 py-3 text-sm font-semibold text-white shadow-lg shadow-x/30 ring-1 ring-white/30 transition-transform hover:-translate-y-0.5 hover:shadow-xl active:scale-95"
             >
-              Play Again 🎉
+              Play Again
             </button>
             <button
               type="button"
