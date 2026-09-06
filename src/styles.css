@@ -92,25 +92,25 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --background: oklch(0.965 0.03 88);
+  --foreground: oklch(0.30 0.03 350);
+  --card: oklch(0.99 0.02 88);
+  --card-foreground: oklch(0.30 0.03 350);
+  --popover: oklch(0.99 0.02 88);
+  --popover-foreground: oklch(0.30 0.03 350);
+  --primary: oklch(0.62 0.19 30);
+  --primary-foreground: oklch(0.98 0.003 88);
+  --secondary: oklch(0.86 0.07 240);
+  --secondary-foreground: oklch(0.30 0.03 350);
+  --muted: oklch(0.965 0.03 88);
+  --muted-foreground: oklch(0.30 0.03 350);
+  --accent: oklch(0.86 0.07 240);
+  --accent-foreground: oklch(0.30 0.03 350);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.30 0.03 350 / 8%);
+  --input: oklch(0.30 0.03 350 / 8%);
+  --ring: oklch(0.62 0.19 30);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -124,6 +124,16 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* Candy arcade palette */
+  --cloth: oklch(0.965 0.03 88);
+  --board-ink: oklch(0.30 0.03 350);
+  --x: oklch(0.62 0.19 30);
+  --o: oklch(0.62 0.14 224);
+  --celery: oklch(0.74 0.16 148);
+  --sky: oklch(0.86 0.07 240);
+  --berry: oklch(0.78 0.13 350);
+  --win: oklch(0.74 0.16 148);
 }
 
 .dark {
