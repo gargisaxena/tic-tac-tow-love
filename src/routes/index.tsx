@@ -189,7 +189,7 @@ function Index() {
                   }`}
                   className={`grid place-items-center rounded-3xl shadow-sm ring-1 ring-foreground/5 transition-all duration-150 ${
                     isWinning
-                      ? "bg-celery/30 ring-2 ring-celery animate-win-pulse"
+                      ? "bg-celery/45 ring-2 ring-celery animate-win-pulse"
                       : "bg-card hover:-translate-y-1 hover:scale-[1.06] hover:shadow-md active:scale-95"
                   } ${cell !== null || isOver ? "cursor-default" : "cursor-pointer"}`}
                   style={{
