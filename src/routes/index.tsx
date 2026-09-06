@@ -43,7 +43,9 @@ function evaluateBoard(board: Cell[]): {
   winningLine: number[] | null;
 } {
   for (const line of WINNING_LINES) {
-    const [a, b, c] = line;
+    const a = line[0]!;
+    const b = line[1]!;
+    const c = line[2]!;
     if (board[a] && board[a] === board[b] && board[a] === board[c]) {
       return { outcome: board[a] as Player, winningLine: line };
     }
